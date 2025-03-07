@@ -8,8 +8,8 @@ def handler(environ, start_response):
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
     
     # Aqui você importa o WSGI application, que é o ponto de entrada para a aplicação.
-    from django.core.wsgi import get_wsgi_application
-    application = get_wsgi_application()
+   from django.core.wsgi import get_wsgi_application
+   handler = get_wsgi_application()
     
     # Retorna a aplicação WSGI para o Vercel.
     return application(environ, start_response)
