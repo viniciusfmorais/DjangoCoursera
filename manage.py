@@ -1,21 +1,10 @@
-#!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
 
-def handler(environ, start_response):
-    """Handler para serverless no Vercel."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
-    
-    # Aqui você importa o WSGI application, que é o ponto de entrada para a aplicação.
-   from django.core.wsgi import get_wsgi_application
-   handler = get_wsgi_application()
-    
-    # Retorna a aplicação WSGI para o Vercel.
-    return application(environ, start_response)
-
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
+    """Run administrative tasks."""
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'onlinecourse.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -26,11 +15,12 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
-
+# Adicione essas linhas para o Vercel
 from django.core.wsgi import get_wsgi_application
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'onlinecourse.settings')
 application = get_wsgi_application()
-app = application
-handler = application
+app = application  # Variável que o Vercel procura
+handler = application  # Outra variável que o Vercel procura
 
 if __name__ == '__main__':
     main()
