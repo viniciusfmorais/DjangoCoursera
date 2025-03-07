@@ -1,16 +1,16 @@
 
+
 {
   "builds": [
     {
-      "src": "onlinecourse/wsgi.py",
+      "src": "vercel_handler.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "onlinecourse/wsgi.py"
+      "dest": "vercel_handler.py"
     }
   ]
 }
-# Arquivo: your_project_name/wsgi.py

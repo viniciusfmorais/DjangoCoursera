@@ -27,5 +27,10 @@ def main():
     execute_from_command_line(sys.argv)
 
 
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
+app = application
+handler = application
+
 if __name__ == '__main__':
     main()
